@@ -74,6 +74,8 @@ a {
     .about-us p {
         margin: 0;
         padding: 0;
+        max-width: 100%;
+        word-wrap: break-word;
     }
  
  }
