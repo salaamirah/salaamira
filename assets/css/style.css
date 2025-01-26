@@ -1,0 +1,287 @@
+/* Reset and Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HEADER / NAV BAR STYLES START */
+
+.logo img {
+    width: 100%;
+     height: 250px;
+     object-fit: contain;
+     overflow: hidden;
+}
+
+.logo {
+    display: none;
+}
+
+header {
+    padding: 20px 35px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    top: 0;
+    background-image: url("../images/hero-bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 80%;
+    z-index: 9999;
+    margin-left: 160px;
+  }
+
+  header h1 img {
+     width: 100%;
+     height: 250px;
+     object-fit: contain;
+     overflow: hidden;
+  }
+  
+  header h1 {
+    font-weight: bold;
+    margin: 0;
+    font-size: 36px;
+  }
+  
+  header a {
+    text-decoration: none;
+    color: black
+  }
+  
+  header nav {
+    margin: 7px 0;
+  }
+  
+  header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin-top: 100px;
+  }
+  
+  header nav ul li a {
+    padding: 10px 15px;
+    font-weight: lighter;
+    font-size: 1.55vw;
+  }
+
+  
+  /* HEADER / NAVBAR STYLES END */
+
+/* Search Container */
+.search-container {
+    display: flex; /* Enable flexbox for alignment */
+    justify-content: flex-end; /* Align the search bar to the right */
+    margin-right: 20px; /* Optional spacing from the container edge */
+    flex-shrink: 0;
+    margin-top: 110px;
+}
+
+/* Search Box Container */
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 50px; /* Collapsed size */
+    height: 50px;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: width 0.4s ease;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Expand the search box on hover or focus */
+.search-box:hover,
+.search-box:focus-within {
+    width: 300px; /* Expanded size */
+}
+
+/* Input Field */
+.search-box .input {
+    width: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: width 0.4s ease, opacity 0.4s ease;
+    flex: 1; /* Allows the input to grow when active */
+}
+
+/* Expand the input field when active */
+.search-box:hover .input,
+.search-box:focus-within .input {
+    width: 100%;
+    padding: 0 20px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Search Icon */
+.search-box .search-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px; /* Initial spacing for the icon */
+    background: url('https://cdn-icons-png.flaticon.com/512/622/622669.png') no-repeat center;
+    background-size: contain;
+    flex-shrink: 0; /* Prevent resizing */
+    transition: opacity 0.4s ease;
+}
+
+/* Hide the icon when the search box expands */
+.search-box:hover .search-icon,
+.search-box:focus-within .search-icon {
+    opacity: 1;
+    visibility: visible;
+}
+
+footer {
+    background-color: #e6a0ac;
+    padding: 20px;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer p {
+    line-height: 2;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.col-4 {
+    flex-basis: 25%;
+}
+
+/* REACH OUT STYLES START */
+.contact {
+    background: var(--secondary-color);
+  }
+  
+  .contact h2 {
+    color: var(--primary-color);
+  }
+  
+  .contact-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .contact-info > * {
+    flex: 1;
+    margin: 15px;
+  }
+  
+  .contact-info iframe {
+    height: 400px;
+  }
+  
+  .contact-info div {
+    color: white;
+  }
+  
+  .contact-info h3 {
+    color: var(--primary-color);
+    font-size: 32px;
+  }
+  
+  .contact-info p, .contact-info address {
+    margin: 20px 0;
+    line-height: 1.5;
+    font-size: 16px;
+    font-style: normal;
+  }
+  
+  .contact-form input, .contact-form textarea {
+    border: 1px solid var(--secondary-color);
+    display: block;
+    padding: 7px 15px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255, 0.75);
+  }
+  
+  .contact-form input:focus, .contact-form textarea:focus {
+    background-color: rgba(255,255,255, 1);
+    outline: none;
+  }
+  
+  .contact-form button {
+    width: 100%;
+    border: none;
+    background: gray;
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .contact-form button:hover {
+    color: black;
+    background: white;
+  }
+  
+  .contact-info a {
+    color: var(--primary-color);
+  }
+  /* REACH OUT STYLES END */
+
+  .social-media-icons i{
+    padding: 10px;
+    color: black;
+    font-size: 22px;
+  }
+
+  .social-media-icons a {
+    text-decoration: none;
+    color: black;
+  }
+
+@media screen and (max-width: 768px) {
+   header {
+    display: none;
+   }
+
+    .col-4 {
+       flex-basis: 50%;
+       padding: 20px;
+    }
+
+    header img {
+        margin-left: 80px;
+    }
+
+    .logo {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .col-4 {
+        flex-basis: 100%;
+    }
+
+}
+
+
