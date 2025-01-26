@@ -70,5 +70,10 @@ a {
      .col-2 {
          flex-basis: 100%;
      }
+    
+    .about-us p {
+        margin: 0;
+        padding: 0;
+    }
  
  }
