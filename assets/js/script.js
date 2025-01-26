@@ -70,8 +70,8 @@ const createFooter = () => {
             <h3>OUR MISSION</h3><br>
             <p>At Salaamirah, we create timeless, high-quality scarves with a focus on style, comfort, and sustainability. Our mission is to empower self-expression through ethical craftsmanship and thoughtful design.</p><br>
             <div class="social-media-icons">
-              <a href="https://www.instagram.com/salaamirah/"><i class="fa-brands fa-instagram"></i></a>
-              <a href=""><i class="fa-brands fa-tiktok"></i></a>
+              <a href="https://www.instagram.com/salaamirah/" target=_blank><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
         <div class="col-4">
