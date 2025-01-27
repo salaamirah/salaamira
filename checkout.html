@@ -18,12 +18,14 @@
 
   <div id="checkout-items"></div><br>
 
-  <form id="checkout-form">
+  <form id="checkout-form" action="https://formsubmit.co/salaamirah@gmail.com" method="post">
     <label for="name">Customer Name:</label><br><br>
     <input type="text" id="name" name="customer_name" required><br><br>
     
     <label for="address">Customer Address:</label><br><br>
     <textarea id="address" name="customer_address" cols="50" rows="10" required></textarea><br><br>
+
+    <input type="hidden" id="checkout-items" name="check-out-items"><br><br> 
     
     <button class="btn" type="submit">Submit</button>
   </form>

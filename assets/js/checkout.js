@@ -17,27 +17,3 @@
      checkoutItemsContainer.innerHTML = '<p>No items in the cart.</p>';
  }
 
- // Initialize EmailJS
-emailjs.init("WzMtmdYy-eFZkRFKM"); // Replace with your EmailJS public key
-
-// Form submission handler
-document.getElementById("checkout-form").addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  // Collect form data
-  const customerName = document.getElementById("name").value;
-  const customerAddress = document.getElementById("address").value;
-
-  // Send email
-  emailjs.send("service_ukj9rrd", "template_2litgj8", {
-    customer_name: customerName,
-    customer_address: customerAddress,
-  }).then(
-    function (response) {
-      alert("Email sent successfully!");
-    },
-    function (error) {
-      alert("Failed to send email. Please try again.");
-    }
-  );
-});
