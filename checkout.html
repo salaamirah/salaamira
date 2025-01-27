@@ -16,9 +16,13 @@
 
 <main class="checkout-box">
 
-    <div id="checkout-cart-summary"></div>
+    <div id="checkout-cart-summary">
+        <h2 id="item-name"></h2>
+        <p id="item-price"></p>
+        <p id="item-description"></p>
       <br>
-      <form action="https://formsubmit.co/salaamirah@gmail.com" method="post" onsubmit="updateCartSummary()">
+      
+      <form action="https://formsubmit.co/salaamirah@gmail.com" method="post">
         <label for="name">Full Name:</label><br><br>
         <input type="text" id="name" name="name" required><br><br>
       
@@ -38,7 +42,7 @@
         <input type="text" id="zip" name="zip" required><br><br>
       
         <!-- Hidden input to include the cart summary -->
-        <input type="hidden" id="checkout-cart-summary-input" name="checkout-cart-summary">
+        <input type="hidden" id="checkout-cart-summary" name="checkout-cart-summary">
       
         <button class="btn" type="submit">Complete Purchase</button>
       </form>
@@ -51,7 +55,7 @@
 
     <script src="./assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/bce413e63f.js" crossorigin="anonymous"></script>
-    <script src="./assets/js/checkout.js"></script>
+   
     
 </body>
 </html>
