@@ -78,6 +78,8 @@ const createFooter = () => {
             <a href="shipping.html"><p>Shipping & Returns</p></a>
             <a href="faq.html"><p>FAQ</p></a>
             <a href="feedback.html"><p>Give us Feedback</p></a>
+            <a href="privacy-policy.html"><p>Privacy Policy</p></a>
+             <a href="terms-of-service.html"><p>Terms of Service</p></a>
         </div>
         <div class="col-4">
             <h3>STAY IN TOUCH</h3><br>
