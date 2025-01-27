@@ -22,6 +22,15 @@
     line-height: 2;
 }
 
+.btn {
+    padding: 10px;
+    border: none;
+    background-color: #e6a0ac;
+    color: black;
+    margin-left: -500px;
+    cursor: pointer;
+}
+
 /* Media query for tablets (screens smaller than 768px) */
 @media (max-width: 768px) {
     .row {
@@ -57,5 +66,9 @@
     .left {
         font-size: 16px; /* Adjust text size for better readability */
         margin-left: 0;
+    }
+
+    .btn {
+        margin-left: 15px;
     }
 }

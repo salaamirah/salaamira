@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salaamira</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/product.css">
+    <link rel="stylesheet" href="./assets/css/cart.css">
     <link rel="icon" type="image/png" href="./assets/images/SALA-AMIRA.png">
 </head>
 <body>
@@ -14,20 +14,11 @@
 
 <section class="logo"></section>
 
-<main>
+<main class="cart-box">
 
-   <div class="row">
-        <div class="col-2">
-            <img src="./assets/images/image.png" alt="">
-        </div>
-        <div class="col-2">
-            <h2 class="left">Product Name</h2>
-            <h2 class="left">Price</h2>
-            <h2 class="left">Description</h2>
-            <p class="left">Line item description</p><br>
-            <button class="btn">Add to Cart</button>
-        </div>
-   </div>
+    <div id="cart-items"></div><br>
+    <button class="btn" id="clear-cart">Clear Cart</button><br><br>
+    <button class="btn" id="proceed-to-checkout">Proceed to Checkout</button>
 
 </main><br><br>
 
@@ -37,7 +28,7 @@
 
     <script src="./assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/bce413e63f.js" crossorigin="anonymous"></script>
-    <script src="./assets/js/product.js"></script>
+    <script src="./assets/js/cart.js"></script>
     
 </body>
 </html>

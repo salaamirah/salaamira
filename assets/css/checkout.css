@@ -1,0 +1,22 @@
+.checkout-box {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    background-color: #e6a0ac;
+    color: black;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 500px) {
+    .checkout-box {
+        padding: 10px;
+    }
+}
