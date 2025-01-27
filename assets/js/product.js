@@ -3,7 +3,8 @@ document.querySelector('.btn').addEventListener('click', function() {
     const product = {
         name: document.querySelector('.left:nth-of-type(1)').textContent,
         price: document.querySelector('.left:nth-of-type(2)').textContent,
-        description: document.querySelector('.left:nth-of-type(3)').textContent
+        description: document.querySelector('.left:nth-of-type(3)').textContent,
+        quantity: document.querySelector('#quantity').value // Get the selected quantity
     };
 
     // Check if there's already a cart in localStorage
