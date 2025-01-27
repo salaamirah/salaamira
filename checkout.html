@@ -16,36 +16,17 @@
 
 <main class="checkout-box">
 
-    <div id="checkout-cart-summary">
-        <h2 id="item-name"></h2>
-        <p id="item-price"></p>
-        <p id="item-description"></p>
-      <br>
-      
-      <form action="https://formsubmit.co/salaamirah@gmail.com" method="post">
-        <label for="name">Full Name:</label><br><br>
-        <input type="text" id="name" name="name" required><br><br>
-      
-        <label for="email">Email:</label><br><br>
-        <input type="email" id="email" name="email" required><br><br>
-      
-        <label for="address">Address:</label><br><br>
-        <input type="text" id="address" name="address" required><br><br>
-      
-        <label for="city">City:</label><br><br>
-        <input type="text" id="city" name="city" required><br><br>
-      
-        <label for="state">State:</label><br><br>
-        <input type="text" id="state" name="state" required><br><br>
-      
-        <label for="zip">Zip Code:</label><br><br>
-        <input type="text" id="zip" name="zip" required><br><br>
-      
-        <!-- Hidden input to include the cart summary -->
-        <input type="hidden" id="checkout-cart-summary" name="checkout-cart-summary">
-      
-        <button class="btn" type="submit">Complete Purchase</button>
-      </form>
+  <div id="checkout-items"></div><br>
+
+  <form id="checkout-form">
+    <label for="name">Customer Name:</label><br><br>
+    <input type="text" id="name" name="customer_name" required><br><br>
+    
+    <label for="address">Customer Address:</label><br><br>
+    <textarea id="address" name="customer_address" cols="50" rows="10" required></textarea><br><br>
+    
+    <button class="btn" type="submit">Submit</button>
+  </form>
 
 </main><br><br>
 
@@ -55,6 +36,7 @@
 
     <script src="./assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/bce413e63f.js" crossorigin="anonymous"></script>
+    <script src="./assets/js/checkout.js"></script>
    
     
 </body>
