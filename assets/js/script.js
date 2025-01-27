@@ -35,14 +35,6 @@ const createHeader = () => {
       </nav>
     </header>
     <!-- end navigation -->
-     <div class="search-container">
-        <div class="search-box">
-            <input type="text" placeholder="Search..." class="input">
-            <div class="search-icon">
-                <!-- Add a search icon here -->
-            </div>
-        </div>
-    </div>
     `
     ;
 };
@@ -54,7 +46,7 @@ const createSection = () => {
   let section = document.querySelector('.logo');
   section.innerHTML = `
       <div class="logo">
-       <img src="./assets/images/SALA-AMIRA.png">
+      <img src="./assets/images/SALA-AMIRA.png">
     </div>
     `
   ;
