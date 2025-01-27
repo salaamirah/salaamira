@@ -70,5 +70,14 @@ a {
      .col-2 {
          flex-basis: 100%;
      }
+
+     .about-us {
+        padding: -100px;
+        margin: -100px;
+      }
+  
+      .about-us img {
+        height: 500px;
+      }
  
  }
