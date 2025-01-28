@@ -1,0 +1,14 @@
+main p {
+    line-height: 2;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 25px;
+    }
+}
