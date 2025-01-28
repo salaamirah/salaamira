@@ -1,8 +1,0 @@
- <div class="search-container">
-        <div class="search-box">
-            <input id="searchbar" input type="text" placeholder="Search..." onkeyup="search_animal()" class="input" name="search">
-            <div class="search-icon">
-                <!-- Add a search icon here -->
-            </div>
-        </div>
-    </div>
