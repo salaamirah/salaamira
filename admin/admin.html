@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Chat</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">Admin Chat</div>
+        <div class="chat-body" id="chatBody"></div>
+        <div class="chat-footer">
+            <input type="text" id="messageInput" placeholder="Type a message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        function sendMessage() {
+            const messageText = document.getElementById("messageInput").value.trim();
+            if (messageText === "") return;
+
+            const chatBody = document.getElementById("chatBody");
+            const message = document.createElement("div");
+            message.textContent = "You: " + messageText;
+            chatBody.appendChild(message);
+
+            // Send to the customer
+            socket.emit("message", messageText);
+        }
+
+        // Listen for messages from customers
+        socket.on("message", (data) => {
+            const chatBody = document.getElementById("chatBody");
+            const message = document.createElement("div");
+            message.textContent = "Customer: " + data;
+            chatBody.appendChild(message);
+        });
+    </script>
+</body>
+</html>

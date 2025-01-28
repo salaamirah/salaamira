@@ -2,5 +2,23 @@
   "dependencies": {
     "express": "^4.21.2",
     "socket.io": "^4.8.1"
-  }
+  },
+  "name": "salaamira",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salaamirah/salaamira.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salaamirah/salaamira/issues"
+  },
+  "homepage": "https://github.com/salaamirah/salaamira#readme",
+  "description": ""
 }
