@@ -11,6 +11,10 @@
     cursor: pointer;
 }
 
+#cart-items {
+    line-height: 2;
+}
+
 @media (max-width: 768px) {
 
 }
