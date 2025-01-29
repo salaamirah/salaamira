@@ -7,8 +7,17 @@
     padding: 10px;
     border: none;
     background-color: #e6a0ac;
-    color: black;
+    color: white;
     cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    width: 100px;
+    height: 40px;
+}
+
+.btn:hover {
+    background-color: gray;
+    color: white;
 }
 
 #checkout-items {

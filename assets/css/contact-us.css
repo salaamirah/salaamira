@@ -76,14 +76,19 @@ main {
   }
   
   .hero-form button {
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
+    color: white;
+    background-color: gray;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 10px;
     cursor: pointer;
   } 
+
+  .hero-form button:hover {
+    background-color: white;
+    color: gray;
+  }
   
   .checkbox-wrapper input, .radio-wrapper input {
     opacity: 0;
@@ -161,6 +166,10 @@ main {
 @media screen and (max-width: 500px) {
     .hero-form button {
       width: 100%;
+    }
+
+    .hero-form {
+      margin-left: -3px;
     }
   
   }
