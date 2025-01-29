@@ -86,8 +86,8 @@ const createFooter = () => {
             <div class="contact-form">
           <form action="https://formsubmit.co/salaamirah@gmail.com" method="post">
       <input type="text" placeholder="Your Name" id="name" name="name" class="form-input" />
-      <input type="email" placeholder="Email Address" id="email" name="email" class="form-input" />
-      <textarea id="message" placeholder="Message" name="message" cols="50" rows="5"></textarea>
+      <input type="email" placeholder="Your Email" id="email" name="email" class="form-input" />
+      <textarea id="message" placeholder="Your Message" name="message" cols="50" rows="5"></textarea>
         
             <button type="submit">Submit</button>
           </form>
