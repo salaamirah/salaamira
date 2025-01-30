@@ -1,3 +1,36 @@
 h2 {
     text-align: center;
+    margin-bottom: 25px;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+details {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    outline: none;
+}
+
+details p {
+    padding: 10px;
+    margin: 0;
+    line-height: 2;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
 }
