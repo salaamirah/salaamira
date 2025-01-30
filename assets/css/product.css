@@ -7,6 +7,7 @@
 
 .col-2 {
     flex-basis: 50%;
+    text-align: left;
 }
 
 .col-2 img {
@@ -18,7 +19,6 @@
 }
 
 .left {
-    margin-left: -500px;
     line-height: 2;
 }
 
@@ -27,7 +27,6 @@
     border: none;
     background-color: #e6a0ac;
     color: black;
-    margin-left: -500px;
     cursor: pointer;
 }
 
@@ -40,7 +39,6 @@
 
     .col-2 {
         flex-basis: 100%;
-        text-align: center;
         margin-bottom: 20px;
     }
 
@@ -52,7 +50,6 @@
 
     .left {
         margin-left: 0;
-        text-align: center;
     }
 }
 
@@ -66,9 +63,11 @@
     .left {
         font-size: 16px; /* Adjust text size for better readability */
         margin-left: 0;
+        margin-left: -170px;
+        font-size: 22px;
     }
 
     .btn {
-        margin-left: 15px;
+        margin-left: -170px;
     }
 }
