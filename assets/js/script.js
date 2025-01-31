@@ -84,7 +84,7 @@ const createFooter = () => {
         <div class="col-4">
             <h3>STAY IN TOUCH</h3><br>
             <div class="contact-form">
-          <form action="https://formsubmit.co/salaamirah@gmail.com" method="post">
+          <form action="https://formsubmit.co/salaamirah@yahoo.com" method="post">
       <input type="text" placeholder="Your Name" id="name" name="name" class="form-input" />
       <input type="email" placeholder="Your Email" id="email" name="email" class="form-input" />
       <textarea id="message" placeholder="Your Message" name="message" cols="50" rows="5"></textarea>
