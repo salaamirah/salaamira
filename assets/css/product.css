@@ -63,11 +63,11 @@
     .left {
         font-size: 16px; /* Adjust text size for better readability */
         margin-left: 0;
-        margin-left: -170px;
+        margin-left: -100px;
         font-size: 22px;
     }
 
     .btn {
-        margin-left: -170px;
+        margin-left: -100px;
     }
 }
