@@ -11,48 +11,48 @@
         "name": "DEMURE",
         "price": "$23.00",
         "description": "This is Product 2",
-        "image": "./assets/images/image.png"
+        "image": "./assets/images/DEMURE.jpg"
     },
     {
         "id": 3,
         "name": "VINTAGE FLORA",
         "price": "$23.00",
         "description": "This is Product 2",
-        "image": "./assets/images/image.png"
+        "image": "./assets/images/VINTAGE FLORA.jpg"
     },
     {
         "id": 4,
         "name": "OBRELICIOUS",
         "price": "$21.00",
         "description": "This is Product 2",
-        "image": "./assets/images/image.png"
+        "image": "./assets/images/OBRELICIOUS.jpg"
     },
     {
         "id": 5,
         "name": "COLOR POP",
         "price": "$23.00",
         "description": "This is Product 2",
-        "image": "./assets/images/image.png"
+        "image": "./assets/images/COLOR POP.jpg"
     },
     {
         "id": 6,
         "name": "MIDNIGHT DREAM",
         "price": "$25.00",
         "description": "This is Product 2",
-        "image": "./assets/images/image.png"
+        "image": "./assets/images/MIDNIGHT DREAM.jpg"
     },
     {
         "id": 7,
         "name": "CHERRY RED",
         "price": "$21.00",
         "description": "This is Product 2",
-        "image": "./assets/images/image.png"
+        "image": "./assets/images/CHERRY RED.jpg"
     },
     {
         "id": 8,
         "name": "POOKIE",
         "price": "$25.00",
         "description": "This is Product 2",
-        "image": "./assets/images/image.png"
+        "image": "./assets/images/POOKIE.jpg"
     }
 ]
