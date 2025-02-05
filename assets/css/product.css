@@ -30,6 +30,23 @@
     cursor: pointer;
 }
 
+.col-3 {
+    flex-basis: 33.3%;
+    padding: 20px;
+}
+
+.col-3 img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.additional-images {
+    max-width: 800px;
+    margin: auto;
+}
+
 /* Media query for tablets (screens smaller than 768px) */
 @media (max-width: 768px) {
     .row {
@@ -51,8 +68,11 @@
     .left {
         margin-left: 0;
     }
-}
 
+    .col-3 {
+        flex-basis: 50%;
+    }
+}
 /* Media query for mobile phones (screens smaller than 480px) */
 @media (max-width: 500px) {
     .col-2 img {
@@ -69,5 +89,9 @@
 
     .btn {
         margin-left: -100px;
+    }
+    
+    .col-3 {
+        flex-basis: 100%;
     }
 }
