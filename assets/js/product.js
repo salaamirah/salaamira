@@ -12,18 +12,45 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Display product details if found
     if (product) {
-        document.querySelector('.col-2 img').src = product.image;
-        document.querySelector('.col-2 img').alt = product.name;
+        const mainImage = document.querySelector('.col-2 img');
+        mainImage.src = product.image;
+        mainImage.alt = product.name;
         document.querySelector('.left:nth-of-type(1)').textContent = product.name;
         document.querySelector('.left:nth-of-type(2)').textContent = product.price;
         document.querySelector('.left:nth-of-type(3)').textContent = 'Description';
         document.querySelector('.left:nth-of-type(4)').textContent = product.description;
+
+        // Create a container for additional images and video
+        const mediaContainer = document.createElement('div');
+        mediaContainer.classList.add('media-container');
+        document.querySelector('.col-2').appendChild(mediaContainer);
+
+        // Check for additional images and append them
+        Object.keys(product).forEach(key => {
+            if (key.startsWith('image-')) {
+                const extraImg = document.createElement('img');
+                extraImg.src = product[key];
+                extraImg.alt = `${product.name} - additional image`;
+                extraImg.classList.add('extra-image');
+                mediaContainer.appendChild(extraImg);
+            }
+        });
+
+        // Check if a video exists and append it
+        if (product.video) {
+            const videoElement = document.createElement('video');
+            videoElement.src = product.video;
+            videoElement.controls = true;
+            videoElement.classList.add('product-video');
+            mediaContainer.appendChild(videoElement);
+        }
     } else {
         // Handle case where product is not found
         document.querySelector('main').innerHTML = '<p>Product not found.</p>';
     }
 });
 
+// Add to cart functionality
 document.querySelector('.btn').addEventListener('click', function() {
     // Product details
     const product = {

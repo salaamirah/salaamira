@@ -25,34 +25,45 @@
         "name": "OBRELICIOUS",
         "price": "$21.00",
         "description": "This is Product 2",
-        "image": "./assets/images/OBRELICIOUS.jpg"
+        "image": "./assets/images/OBRELICIOUS.jpg",
+        "image-1": "./assets/images/OBRELICIOUS-1.jpg",
+        "image-2": "./assets/images/OBRELICIOUS-2.jpg"
     },
     {
         "id": 5,
         "name": "COLOR POP",
         "price": "$23.00",
         "description": "This is Product 2",
-        "image": "./assets/images/COLOR POP.jpg"
+        "image": "./assets/images/COLOR POP.jpg",
+        "image-1": "./assets/images/COLOR POP-1.jpg",
+        "image-2": "./assets/images/COLOR POP 2.jpg",
+        "video": "./assets/images/color pop.mp4"
     },
     {
         "id": 6,
         "name": "MIDNIGHT DREAM",
         "price": "$25.00",
         "description": "This is Product 2",
-        "image": "./assets/images/MIDNIGHT DREAM.jpg"
+        "image": "./assets/images/MIDNIGHT DREAM.jpg",
+        "image-1": "./assets/images/MID NIGHT DREAM 1.jpg",
+        "image-2": "./assets/images/MIDNIGHT DREAM 2.jpg"
     },
     {
         "id": 7,
         "name": "CHERRY RED",
         "price": "$21.00",
         "description": "This is Product 2",
-        "image": "./assets/images/CHERRY RED.jpg"
+        "image": "./assets/images/CHERRY RED.jpg",
+        "image-1": "./assets/images/CHERRY RED 1.jpg",
+        "image-2": "./assets/images/cherry red 2.jpg"
     },
     {
         "id": 8,
         "name": "POOKIE",
         "price": "$25.00",
         "description": "This is Product 2",
-        "image": "./assets/images/POOKIE.jpg"
+        "image": "./assets/images/POOKIE.jpg",
+        "image-1": "./assets/images/pookie1.jpg",
+        "image-2": "./assets/images/pookie2.jpg"
     }
 ]
