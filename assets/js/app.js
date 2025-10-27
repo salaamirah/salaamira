@@ -49,7 +49,7 @@
   const CART_KEY     = 'minishop:cart';
   const DISCOUNT_KEY = 'minishop:discount';
   const TAX_RATE     = 0.00; // set your tax rate here
-  const SHIP_LABEL   = '$6.99';
+  const SHIP_LABEL   = 'Free';
 
   // ====== Discount table (edit / extend as needed) ======
   // type: 'percent' or 'fixed' (fixed is same currency as your shop)
