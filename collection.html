@@ -99,6 +99,15 @@
           </div>
         </div>
 
+        <!-- Discount input (place before .ck-actions in the checkout form) -->
+<div class="ck-field ck-span-2" style="display:flex; gap:8px; align-items:center;">
+  <div style="flex:1; display:flex; gap:8px; align-items:center;">
+    <input id="ckDiscount" type="text" name="discount" placeholder="Discount code (e.g. SAVE10)" />
+    <button type="button" id="ckApplyDiscount" class="btn">Apply</button>
+  </div>
+  <div id="ckDiscountMsg" aria-live="polite" style="min-width:160px; text-align:right; color:var(--muted); font-size:13px;"></div>
+</div>
+
         <!-- Customer Info -->
         <div class="ck-field">
           <label for="ckName">Name</label>
