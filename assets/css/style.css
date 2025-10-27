@@ -209,6 +209,9 @@
       .discount-banner p {
         padding: 20px;
       }
+          .footer__logo img {
+        display: none;
+      }
       .media img{height:420px}
       .card--sm .media img{height:420px}
     }
