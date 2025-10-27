@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salaamira</title>
+  <link rel="icon" href="./assets/images/logo.webp" type="image/webp" />
+  <meta name="description" content="Salaamira — modest fashion, scarves, and the Salaam Exclusive collection supporting women in need." />
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+  <!-- Hidden checkbox powers the drawer open/close without JS -->
+  <input type="checkbox" id="navToggle" class="nav-toggle" aria-hidden="true" />
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <!-- Left: hamburger -->
+      <div class="left-controls">
+        <label class="icon-btn" for="navToggle" aria-label="Open menu">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path stroke-width="1.5" d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </label>
+      </div>
+
+      <!-- Center: logo -->
+      <a href="index.html" class="logo" aria-label="Sala Samira home">
+        <img src="./assets/images/logo.webp" alt="Sala Samira logo"/>
+      </a>
+
+      <div class="right-controls" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <!-- ===== DRAWER + OVERLAY (LEFT NAV) — no JS ===== -->
+  <label class="overlay" id="overlay" for="navToggle" aria-hidden="true"></label>
+  <aside class="drawer" id="drawer" aria-label="Site">
+    <div class="drawer-header">
+      <div style="display:flex; align-items:center; gap:10px">
+        <label class="icon-btn" for="navToggle" aria-label="Close menu">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke-width="1.5"/>
+          </svg>
+        </label>
+      </div>
+      <div class="logo" aria-hidden="true" style="transform:scale(.7); opacity:.9">
+        <img src="./assets/images/logo.webp" alt="Sala Amira logo"/>
+      </div>
+    </div>
+    <nav class="drawer-nav" role="navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="#salaam">SALAAM EXCLUSIVE</a>
+      <a href="./collection.html">Catalog</a>
+      <a href="./contact-us.html">Contact</a>
+    </nav>
+  </aside>
+
+  <!-- ===== HERO VIDEO ===== -->
+  <article class="video-card" aria-label="Product demo video">
+    <div class="video-frame">
+      <video controls preload="metadata" playsinline poster="./assets/images/video.png" loop autoplay>
+        <source src="./assets/c8266e8df420444091f2f857bd215019.HD-1080p-2.5Mbps-42228079.mp4" type="video/mp4">
+        <track kind="captions" src="captions/demo.en.vtt" srclang="en" label="English">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </article>
+
+  <!-- ===== PROMO ===== -->
+  <div class="discount-banner">
+    <span class="bow">🎀</span>
+    USE THE DISCOUNT CODE <strong>“SALAAM10”</strong> TO GET 10% OFF THE ORDER
+    <span class="bow">🎀</span>
+  </div>
+
+  <!-- ===== FEATURED (static markup) ===== -->
+  <section class="gallery" id="catalog" aria-label="Featured products">
+    <article class="card left">
+      <div class="media">
+        <img src="./assets/images/CHERRYRED1.webp" alt="Pearl Rose Modal Hijab">
+      </div>
+      <div class="meta">
+        <div class="title">CHERRY RED</div>
+        <div class="price"><span class="was">$21.00</span><span class="now">$19.99</span></div>
+        <a href="./collection.html#/p/cherry-red"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+      </div>
+    </article>
+
+    <div class="stack">
+      <article class="card card--sm">
+        <div class="media">
+          <img src="./assets/images/COLORPOP2.webp" alt="Peach Bloom Chiffon">
+        </div>
+        <div class="meta">
+          <div class="title">COLOR POP</div>
+          <div class="price"><span class="was">$25.00</span><span class="now">$22.00</span></div>
+          <a href="./collection.html#/p/color-pop"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+        </div>
+      </article>
+
+      <article class="card card--sm">
+        <div class="media">
+          <img src="./assets/images/demure.webp" alt="Soft Lilac Satin">
+        </div>
+        <div class="meta">
+          <div class="title">DEMURE</div>
+          <div class="price"><span class="was">$23.00</span><span class="now">$19.99</span></div>
+          <a href="./collection.html#/p/demure"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== COLLECTION SLIDER (static, scroll by touch/trackpad) ===== -->
+  <section class="collection" aria-label="Modal collection">
+    <div class="collection__inner">
+      <h2 class="collection__title">MODAL COLLECTION</h2>
+      <div class="slider">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="arch"><img src="./assets/images/MIDNIGHTDREAM2.webp" alt="Modal Sand"></div>
+          <div class="card__content">
+            <div class="title">MIDNIGHT DREAM</div>
+            <div class="price"><span class="was">$25.00</span><span class="now">$22.00</span></div>
+            <a href="./collection.html#/p/midnight-dream"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="arch"><img src="./assets/images/VINTAGEFLORA.webp" alt="Modal Rose"></div>
+          <div class="card__content">
+            <div class="title">VINTAGE FLORA</div>
+            <div class="price-row"><span class="compare">$23.00</span><span class="price">$19.99</span></div>
+            <button class="btn" type="button" aria-disabled="true">View Product</button>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="arch"><img src="./assets/images/POOKIE_e668edcd-c51d-4b81-8719-9973d66796ee.webp" alt="Modal Olive"></div>
+          <div class="card__content">
+            <div class="title">POOKIE</div>
+            <div class="price-row"><span class="compare">$25.00</span><span class="price">$22.00</span></div>
+            <a href="./collection.html#/p/vintage-flora"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="arch"><img src="./assets/images/COLORPOP2.webp" alt="Modal Cloud"></div>
+          <div class="card__content">
+            <div class="title">COLOR POP</div>
+            <div class="price-row"><span class="compare">$25.00</span><span class="price">$22.00</span></div>
+            <a href="./collection.html#/p/color-pop"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="card">
+          <div class="arch"><img src="./assets/images/OBRELICIOUS-1_7748dddf-3fff-4ce7-a8d2-f1f22301ddb3.webp" alt="Modal Cloud"></div>
+          <div class="card__content">
+            <div class="title">OMBRELICIOUS</div>
+            <div class="price-row"><span class="compare">$21.00</span><span class="price">$19.99</span></div>
+            <a href="./collection.html#/p/ombrelicious"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="card">
+          <div class="arch"><img src="./assets/images/CHERRYRED1.webp" alt="Modal Cloud"></div>
+          <div class="card__content">
+            <div class="title">CHERRY RED</div>
+            <div class="price-row"><span class="compare">$21.00</span><span class="price">$19.99</span></div>
+            <a href="./collection.html#/p/cherry-red"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+          </div>
+        </div>
+        <!-- Card 7 -->
+        <div class="card">
+          <div class="arch"><img src="./assets/images/demure.webp" alt="Modal Cloud"></div>
+          <div class="card__content">
+            <div class="title">DEMURE</div>
+            <div class="price-row"><span class="compare">$23.00</span><span class="price">$19.99</span></div>
+            <a href="./collection.html#/p/demure"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SALAAM EXCLUSIVE SECTION ===== -->
+  <section class="salaam" id="salaam">
+    <div class="hero__wrap">
+      <figure class="hero__media">
+        <img src="./assets/images/salaam.webp" alt="Woman wearing peach scarf from the Salaam Exclusive collection">
+      </figure>
+      <div class="hero__content">
+        <h1 class="eyebrow">SALAAM EXCLUSIVE</h1>
+        <p class="sublead">Wear your support for WOMEN IN NEED.</p>
+        <p class="copy">
+          Proceeds from <em>"SALAAM EXCLUSIVE COLLECTION"</em> will go towards providing support for women
+          helping them stay safe and healthy in these difficult times.
+        </p>
+        <h2 class="how">How it helps:</h2>
+        <p class="copy">
+          Each purchase helps a woman in need by providing hygiene kits &amp; essential supplies.
+          <br>Wear it. Support it.
+        </p>
+        <a class="cta" href="./collection.html#/p/salaam-exclusive">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" aria-labelledby="about-title">
+    <div class="about__grid">
+      <figure class="about__media">
+        <img src="./assets/images/hijab.webp" alt="Model wearing a floral hijab, holding pink roses"/>
+      </figure>
+      <div class="about__content">
+        <h2 id="about-title" class="about__eyebrow">ABOUT US</h2>
+        <p class="about__para">
+          As two young hijabis searching for something more than just basic hijabs, we found ourselves struggling to find styles that truly spoke to us. So, we decided to create our own.
+        </p>
+        <p class="about__para">
+          Our mission is to make hijabs a statement of confidence, creativity, and beauty, helping every woman express herself with pride. We believe every one of you deserves to feel fabulous in your hijab, and that's exactly what we're here to deliver.
+        </p>
+        <p class="about__quote">
+          What begun as a <em>personal need</em> has turned into a <em>movement</em>, and we're so excited to share it with you.
+        </p>
+        <p class="about__quote">
+          "FROM OUR PASSION TO YOUR WARDROBE – ONE PIECE AT A TIME"
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUBSCRIBE ===== -->
+  <section class="discount-banner" id="contact">
+    <div class="container hero__inner">
+      <h1 class="hero__title">Subscribe to our emails</h1>
+      <p class="hero__subtitle">Be the first to know about new collections and exclusive offers.</p>
+      <form class="subscribe" action="#" method="post" aria-label="Email signup">
+        <label class="visually-hidden" for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Email" required>
+        <button class="subscribe__btn" type="submit" aria-label="Submit email">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M5 12h12m0 0l-5-5m5 5l-5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <nav class="footer__col">
+        <h2 class="footer__title">SHOP</h2>
+        <ul class="footer__links">
+          <li><a href="./collection.html">Shop</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col">
+        <h2 class="footer__title">RESOURCES</h2>
+        <ul class="footer__links">
+          <li><a href="./contact-us.html">Contact us</a></li>
+          <li><a href="./contact-us.html">Give us Feedback</a></li>
+          <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="./terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__logo">
+        <img src="./assets/images/logo.webp" alt="Sala Amira logo" class="sa-logo">
+      </div>
+    </div>
+  </footer>
+
+  <!-- No scripts: this is a fully static build that preserves the visual design -->
+</body>
+</html>

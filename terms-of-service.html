@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salaamira</title>
+  <link rel="icon" href="./assets/images/logo.webp" type="image/webp" />
+  <meta name="description" content="Salaamira — modest fashion, scarves, and the Salaam Exclusive collection supporting women in need." />
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/terms-of-service.css">
+</head>
+<body>
+
+  <!-- Hidden checkbox powers the drawer open/close without JS -->
+  <input type="checkbox" id="navToggle" class="nav-toggle" aria-hidden="true" />
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <!-- Left: hamburger -->
+      <div class="left-controls">
+        <label class="icon-btn" for="navToggle" aria-label="Open menu">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path stroke-width="1.5" d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </label>
+      </div>
+
+      <!-- Center: logo -->
+      <a href="index.html" class="logo" aria-label="Sala Samira home">
+        <img src="./assets/images/logo.webp" alt="Sala Samira logo"/>
+      </a>
+
+      <div class="right-controls" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <!-- ===== DRAWER + OVERLAY (LEFT NAV) — no JS ===== -->
+  <label class="overlay" id="overlay" for="navToggle" aria-hidden="true"></label>
+  <aside class="drawer" id="drawer" aria-label="Site">
+    <div class="drawer-header">
+      <div style="display:flex; align-items:center; gap:10px">
+        <label class="icon-btn" for="navToggle" aria-label="Close menu">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke-width="1.5"/>
+          </svg>
+        </label>
+      </div>
+      <div class="logo" aria-hidden="true" style="transform:scale(.7); opacity:.9">
+        <img src="./assets/images/logo.webp" alt="Sala Amira logo"/>
+      </div>
+    </div>
+    <nav class="drawer-nav" role="navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="#salaam">SALAAM EXCLUSIVE</a>
+      <a href="#catalog">Catalog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
+
+<main>
+
+  <h1>Terms of Service</h1><br>
+  <section>
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing or using our website, you agree to comply with and be bound by these Terms of Service. If you do not agree, you may not use our website or services.</p>
+</section>
+
+<section>
+    <h2>2. Use of the Website</h2>
+    <p>You agree to use our website for lawful purposes only. You must not:</p>
+    <ul>
+        <li>Engage in any fraudulent or illegal activities.</li>
+        <li>Disrupt or interfere with the website’s functionality.</li>
+        <li>Use our content without explicit permission.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>3. Account Responsibilities</h2>
+    <p>If you create an account on our website, you are responsible for maintaining the confidentiality of your login credentials. You agree to notify us immediately of any unauthorized use of your account.</p>
+</section>
+
+<section>
+    <h2>4. Product Information and Orders</h2>
+    <p>We strive to ensure that product descriptions and pricing are accurate. However, we do not guarantee that all information is error-free. We reserve the right to:</p>
+    <ul>
+        <li>Correct errors or inaccuracies.</li>
+        <li>Cancel orders due to pricing errors or availability issues.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>5. Intellectual Property</h2>
+    <p>All content on our website, including text, graphics, logos, and images, is the property of Salaamira or its licensors and is protected by intellectual property laws. Unauthorized use of this content is prohibited.</p>
+</section>
+
+<section>
+    <h2>6. Limitation of Liability</h2>
+    <p>Salaamira is not liable for any direct, indirect, incidental, or consequential damages arising from your use of our website or services. This includes but is not limited to loss of data, profits, or business opportunities.</p>
+</section>
+
+<section>
+    <h2>7. Termination</h2>
+    <p>We reserve the right to terminate your access to our website at any time, without notice, for any reason, including violation of these Terms of Service.</p>
+</section>
+
+<section>
+    <h2>8. Governing Law</h2>
+    <p>These Terms of Service are governed by the laws of [Insert Jurisdiction], without regard to its conflict of law principles. Any disputes shall be resolved exclusively in the courts of [Insert Jurisdiction].</p>
+</section>
+
+<section>
+    <h2>9. Changes to Terms</h2>
+    <p>We may update these Terms of Service from time to time. Changes will be posted on this page with the updated effective date. Your continued use of the website constitutes acceptance of the revised terms.</p>
+</section>
+
+<section>
+    <h2>10. Contact Us</h2>
+    <p>If you have any questions about these Terms of Service, please contact us at:</p>
+    <address>
+        Salaamira<br>
+       
+    </address>
+</section>
+<br>
+</main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <nav class="footer__col">
+        <h2 class="footer__title">SHOP</h2>
+        <ul class="footer__links">
+          <li><a href="./collection.html">Shop</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col">
+        <h2 class="footer__title">RESOURCES</h2>
+        <ul class="footer__links">
+          <li><a href="./contact-us.html">Contact us</a></li>
+          <li><a href="./contact-us.html">Give us Feedback</a></li>
+          <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="./terms-of-service.html">Terms of Service</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__logo">
+        <img src="./assets/images/logo.webp" alt="Sala Amira logo" class="sa-logo">
+      </div>
+    </div>
+  </footer>
+
+  <!-- No scripts: this is a fully static build that preserves the visual design -->
+</body>
+</html>
