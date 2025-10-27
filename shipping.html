@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salaamira</title>
+  <link rel="icon" href="./assets/images/logo.webp" type="image/webp" />
+  <meta name="description" content="Salaamira — modest fashion, scarves, and the Salaam Exclusive collection supporting women in need." />
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/privacy-policy.css">
+</head>
+<body>
+
+  <!-- Hidden checkbox powers the drawer open/close without JS -->
+  <input type="checkbox" id="navToggle" class="nav-toggle" aria-hidden="true" />
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <!-- Left: hamburger -->
+      <div class="left-controls">
+        <label class="icon-btn" for="navToggle" aria-label="Open menu">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path stroke-width="1.5" d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </label>
+      </div>
+
+      <!-- Center: logo -->
+      <a href="index.html" class="logo" aria-label="Sala Samira home">
+        <img src="./assets/images/logo.webp" alt="Sala Samira logo"/>
+      </a>
+
+      <div class="right-controls" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <!-- ===== DRAWER + OVERLAY (LEFT NAV) — no JS ===== -->
+  <label class="overlay" id="overlay" for="navToggle" aria-hidden="true"></label>
+  <aside class="drawer" id="drawer" aria-label="Site">
+    <div class="drawer-header">
+      <div style="display:flex; align-items:center; gap:10px">
+        <label class="icon-btn" for="navToggle" aria-label="Close menu">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke-width="1.5"/>
+          </svg>
+        </label>
+      </div>
+      <div class="logo" aria-hidden="true" style="transform:scale(.7); opacity:.9">
+        <img src="./assets/images/logo.webp" alt="Sala Amira logo"/>
+      </div>
+    </div>
+    <nav class="drawer-nav" role="navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="#salaam">SALAAM EXCLUSIVE</a>
+      <a href="#catalog">Catalog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
+
+<main>
+
+ <div class="container" role="main">
+    <header>
+      <h1>Salaamira — U.S. Shipping & Returns</h1>
+      <p class="lead">Here are Salaamira’s U.S. shipping times. Please note that delivery times may vary.</p>
+    </header>
+
+    <section aria-labelledby="shipping">
+      <h2 id="shipping">Shipping</h2>
+
+      <p><strong>Economy Shipping:</strong> Estimated delivery within <strong>5–7 business days</strong>.</p>
+      <p class="muted">Shipping rates will be calculated at checkout based on your location.</p>
+
+      <div class="note" role="note">
+        <strong>Processing time:</strong> All orders are shipped within <strong>2–3 business days</strong> after being placed.
+        Please expect possible delays during major launches. Orders placed <strong>after 3 PM EST</strong> will be processed on the next business day.
+      </div>
+
+      <p>Once your order is shipped, you will receive a shipping confirmation with tracking details.</p>
+    </section>
+
+    <section aria-labelledby="returns">
+      <h2 id="returns">Return Policy</h2>
+      <p>We want you to be completely satisfied with your purchase. If for any reason you are not, you may request a refund or store credit by following the steps below.</p>
+
+      <h3>Return Requirements</h3>
+      <ul>
+        <li>Items must be unworn, unwashed, and in their original packaging with all tags attached.</li>
+      </ul>
+
+      <h3>How to Initiate a Return</h3>
+      <ol>
+        <li>Log in to your Salaamira account on our website.</li>
+        <li>Navigate to <strong>Order History</strong> and select the order you wish to return.</li>
+        <li>Click <strong>Request a Return</strong> and follow the prompts to generate your return request.</li>
+        <li>Once your return is approved, package your item securely and drop it off at your nearest USPS location.</li>
+      </ol>
+
+      <h3>Important Notes</h3>
+      <ul>
+        <li class="important">Salaamira is not responsible for return shipping fees, customs charges, or lost return packages.</li>
+        <li>Please allow time for processing once your return has been received.</li>
+      </ul>
+
+      <div class="contact">
+        <p>If you have any questions, feel free to contact our support team:</p>
+        <p><a class="button" href="mailto:support@salaamira.com">Email Support</a></p>
+        <p class="muted" style="margin-top:8px;">(Or visit the <a href="/contact">Contact</a> page on our website.)</p>
+      </div>
+    </section>
+  </div>
+  
+</main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <nav class="footer__col">
+        <h2 class="footer__title">SHOP</h2>
+        <ul class="footer__links">
+          <li><a href="./collection.html">Shop</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col">
+        <h2 class="footer__title">RESOURCES</h2>
+        <ul class="footer__links">
+          <li><a href="./contact-us.html">Contact us</a></li>
+          <li><a href="./contact-us.html">Give us Feedback</a></li>
+          <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__logo">
+        <img src="./assets/images/logo.webp" alt="Sala Amira logo" class="sa-logo">
+      </div>
+    </div>
+  </footer>
+
+  <!-- No scripts: this is a fully static build that preserves the visual design -->
+</body>
+</html>
