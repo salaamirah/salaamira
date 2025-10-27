@@ -55,7 +55,7 @@
   // type: 'percent' or 'fixed' (fixed is same currency as your shop)
   // optional minSubtotal: required minimum subtotal before discount applies
   const DISCOUNTS = {
-    'SAVE10': { type: 'percent', value: 10, label: '10% off' },
+    'SALAAM10': { type: 'percent', value: 10, label: '10% off' },
     'TAKE5' : { type: 'fixed',   value: 5,  label: '$5 off' },
     'WELCOME20': { type: 'percent', value: 20, label: '20% off', minSubtotal: 50 }
   };
