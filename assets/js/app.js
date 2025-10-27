@@ -1,8 +1,4 @@
-/* -------------------------------------------------------------
-   MiniShop — Vanilla E-Commerce (HTML • CSS • JS • JSON)
-   Now with: sticky header, product detail page (#/p/:id) routing.
----------------------------------------------------------------- */
-
+/* === Discount-enabled MiniShop (drop into your app.js) === */
 (() => {
   // ====== DOM ======
   const $  = (sel, root=document) => root.querySelector(sel);
@@ -40,19 +36,35 @@
   const ckTax        = $('#ckTax');
   const ckTotal      = $('#ckTotal');
 
+  // Discount elements (we inserted these in HTML)
+  const ckDiscountInput = $('#ckDiscount');
+  const ckApplyBtn = $('#ckApplyDiscount');
+  const ckDiscountMsg = $('#ckDiscountMsg');
+
   // New: containers for list vs. product page
   const elMain      = document.querySelector('main');
   const elProductPage = document.getElementById('productPage');
 
   // ====== Config ======
   const CART_KEY     = 'minishop:cart';
+  const DISCOUNT_KEY = 'minishop:discount';
   const TAX_RATE     = 0.00; // set your tax rate here
   const SHIP_LABEL   = 'Free';
+
+  // ====== Discount table (edit / extend as needed) ======
+  // type: 'percent' or 'fixed' (fixed is same currency as your shop)
+  // optional minSubtotal: required minimum subtotal before discount applies
+  const DISCOUNTS = {
+    'SAVE10': { type: 'percent', value: 10, label: '10% off' },
+    'TAKE5' : { type: 'fixed',   value: 5,  label: '$5 off' },
+    'WELCOME20': { type: 'percent', value: 20, label: '20% off', minSubtotal: 50 }
+  };
 
   // ====== State ======
   let PRODUCTS = [];
   let FILTERED = [];
   let currencySymbol = '$';
+  let APPLIED_DISCOUNT = null; // { code: 'SAVE10', meta: {..}, amount: 5.00 }
 
   // ====== Utils ======
   const fmt = (n) => `${currencySymbol}${Number(n || 0).toFixed(2)}`;
@@ -99,14 +111,38 @@
 
   function clearCart() {
     setCart([]);
+    // also clear applied discount since nothing to apply to
+    setAppliedDiscount(null);
     renderCartLines();
   }
 
-  function totals(cart) {
+  // ====== Totals (now includes discount calculation) ======
+  function totals(cart, applied) {
     const subtotal = cart.reduce((s,i) => s + Number(i.price) * Number(i.qty), 0);
-    const tax = +(subtotal * TAX_RATE).toFixed(2);
-    const grand = +(subtotal + tax).toFixed(2);
-    return { subtotal, tax, grand };
+
+    // compute discount amount
+    let discount = 0;
+    if (applied && applied.meta) {
+      const meta = applied.meta;
+      // verify minSubtotal if present
+      if (!meta.minSubtotal || subtotal >= (meta.minSubtotal || 0)) {
+        if (meta.type === 'percent') {
+          discount = +(subtotal * (meta.value / 100)).toFixed(2);
+        } else if (meta.type === 'fixed') {
+          discount = +Number(meta.value).toFixed(2);
+        }
+        // make sure discount does not exceed subtotal
+        discount = Math.min(discount, subtotal);
+      } else {
+        // min not met -> discount is invalid for current subtotal
+        discount = 0;
+      }
+    }
+
+    const taxable = Math.max(0, subtotal - discount);
+    const tax = +(taxable * TAX_RATE).toFixed(2);
+    const grand = +(taxable + tax).toFixed(2);
+    return { subtotal, discount, tax, grand };
   }
 
   function updateCartBadge() {
@@ -198,9 +234,41 @@
     elDrawer.setAttribute('aria-hidden', 'true');
   }
 
+  // ====== Discount helpers ======
+  function loadAppliedDiscount() {
+    try {
+      const raw = localStorage.getItem(DISCOUNT_KEY);
+      if (!raw) { APPLIED_DISCOUNT = null; return; }
+      APPLIED_DISCOUNT = JSON.parse(raw);
+    } catch {
+      APPLIED_DISCOUNT = null;
+    }
+  }
+  function persistAppliedDiscount() {
+    if (APPLIED_DISCOUNT) localStorage.setItem(DISCOUNT_KEY, JSON.stringify(APPLIED_DISCOUNT));
+    else localStorage.removeItem(DISCOUNT_KEY);
+  }
+  function setAppliedDiscount(obj) {
+    APPLIED_DISCOUNT = obj;
+    persistAppliedDiscount();
+    renderCartLines();
+  }
+
+  function validateDiscount(code, subtotal) {
+    if (!code) return { ok:false, reason: 'Enter a code' };
+    const key = String(code || '').trim().toUpperCase();
+    const meta = DISCOUNTS[key];
+    if (!meta) return { ok:false, reason: 'Invalid code' };
+    if (meta.minSubtotal && subtotal < meta.minSubtotal) {
+      return { ok:false, reason: `Requires minimum ${fmt(meta.minSubtotal)}` };
+    }
+    return { ok:true, code:key, meta };
+  }
+
+  // ====== Drawer rendering (now shows discount row if applied) ======
   function renderCartLines() {
     const cart = getCart();
-    const { subtotal, tax, grand } = totals(cart);
+    const { subtotal, discount, tax, grand } = totals(cart, APPLIED_DISCOUNT);
 
     elCartLines.innerHTML = '';
 
@@ -234,19 +302,48 @@
         $('.btn', row).addEventListener('click', () => removeFromCart(line.id));
         frag.appendChild(row);
       });
+
+      // If discount applied, show a small line summarizing it
+      if (APPLIED_DISCOUNT && (discount > 0)) {
+        const discRow = document.createElement('div');
+        discRow.className = 'line';
+        discRow.innerHTML = `
+          <div style="width:64px"></div>
+          <div>
+            <div class="name">Discount: ${APPLIED_DISCOUNT.code}</div>
+            <div class="desc">${APPLIED_DISCOUNT.meta.label || ''}</div>
+          </div>
+          <div style="display:grid; gap:8px; justify-items:end">
+            <div><strong>- ${fmt(discount)}</strong></div>
+            <button class="btn" type="button" id="removeDiscount">Remove</button>
+          </div>
+        `;
+        frag.appendChild(discRow);
+      }
+
       elCartLines.appendChild(frag);
     }
 
     elSubTotal.textContent = fmt(subtotal);
+    // show discount in tax slot? leave tax label as-is but reflect discount elsewhere; we will show discount in checkout dialog
     elTax.textContent      = fmt(tax);
     elShip.textContent     = SHIP_LABEL;
     elGrand.textContent    = fmt(grand);
 
+    // update checkout dialog totals if open
     if (ckDialog?.open) {
       ckItemsCount.textContent = String(cart.reduce((s,i)=>s+Number(i.qty),0));
       ckSub.textContent   = fmt(subtotal);
+      // show discount under ckTax slot by injecting hidden field? we'll show discount message separately
       ckTax.textContent   = fmt(tax);
       ckTotal.textContent = fmt(grand);
+
+      // reflect discount message in checkout UI
+      if (APPLIED_DISCOUNT && APPLIED_DISCOUNT.meta && totals(cart, APPLIED_DISCOUNT).discount > 0) {
+        ckDiscountMsg.textContent = `${APPLIED_DISCOUNT.code} applied — saved ${fmt(totals(cart, APPLIED_DISCOUNT).discount)}`;
+      } else {
+        ckDiscountMsg.textContent = APPLIED_DISCOUNT ? 'Code not applicable to current subtotal' : '';
+      }
     }
   }
 
@@ -284,37 +381,89 @@
       })),
       totals: {
         subtotal: +t.subtotal.toFixed(2),
+        discount: +t.discount.toFixed(2),
         tax: +t.tax.toFixed(2),
         total: +t.grand.toFixed(2),
         currency: 'USD'
       },
+      discountCode: APPLIED_DISCOUNT ? APPLIED_DISCOUNT.code : null,
       createdAt: new Date().toISOString()
     });
   }
 
   function openCheckout() {
     const cart = getCart();
-    const t = totals(cart);
+    const t = totals(cart, APPLIED_DISCOUNT);
     ckItemsCount.textContent = String(cart.reduce((s,i)=>s+Number(i.qty),0));
     ckSub.textContent   = fmt(t.subtotal);
     ckTax.textContent   = fmt(t.tax);
     ckTotal.textContent = fmt(t.grand);
+
+    // show discount message if any
+    if (APPLIED_DISCOUNT && t.discount > 0) {
+      ckDiscountMsg.textContent = `${APPLIED_DISCOUNT.code} applied — saved ${fmt(t.discount)}`;
+    } else if (APPLIED_DISCOUNT && t.discount === 0) {
+      ckDiscountMsg.textContent = `Code ${APPLIED_DISCOUNT.code} not applicable`;
+    } else {
+      ckDiscountMsg.textContent = '';
+    }
+
     if (ckDialog && typeof ckDialog.showModal === 'function') ckDialog.showModal();
   }
   function closeCheckout() { try { ckDialog?.close(); } catch {} }
 
   ckForm?.addEventListener('submit', () => {
     const cart = getCart();
-    const t = totals(cart);
+    const t = totals(cart, APPLIED_DISCOUNT);
     ensureHidden('order_items', cartToText(cart));
     ensureHidden('order_json',  cartToJSON(cart, t));
     ensureHidden('subtotal',    t.subtotal.toFixed(2));
+    ensureHidden('discount',    t.discount.toFixed(2));
     ensureHidden('tax',         t.tax.toFixed(2));
     ensureHidden('total',       t.grand.toFixed(2));
+    ensureHidden('discount_code', APPLIED_DISCOUNT ? APPLIED_DISCOUNT.code : '');
     if (COPY_ME) ensureHidden('_cc', COPY_ME);
     const emailField = ckForm.querySelector('input[name="email"]');
     if (emailField?.value) ensureHidden('_replyto', emailField.value);
-    localStorage.removeItem(CART_KEY); // clear on submit
+
+    // NOTE: clear the cart only after successful final submit — we remove it here to mirror original behavior:
+    localStorage.removeItem(CART_KEY);
+    // keep discount saved across sessions until removed or cart cleared
+  });
+
+  // ====== Discount UI wiring ======
+  function applyDiscountCodeFromInput() {
+    const code = (ckDiscountInput?.value || '').trim().toUpperCase();
+    const cart = getCart();
+    const subtotal = cart.reduce((s,i) => s + Number(i.price) * Number(i.qty), 0);
+    const res = validateDiscount(code, subtotal);
+    if (!res.ok) {
+      setAppliedDiscount({ code: code, meta: null });
+      ckDiscountMsg.textContent = res.reason;
+      renderCartLines();
+      return;
+    }
+    // success
+    setAppliedDiscount({ code: res.code, meta: res.meta });
+    ckDiscountMsg.textContent = `${res.code} applied — ${res.meta.label || ''}`;
+    // re-render totals
+    renderCartLines();
+  }
+
+  ckApplyBtn?.addEventListener('click', () => applyDiscountCodeFromInput());
+
+  // allow Enter key inside discount input to apply
+  ckDiscountInput?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); applyDiscountCodeFromInput(); }
+  });
+
+  // remove discount button in drawer (delegated)
+  elCartLines?.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'removeDiscount') {
+      setAppliedDiscount(null);
+      ckDiscountInput.value = '';
+      ckDiscountMsg.textContent = '';
+    }
   });
 
   // ====== Events / Wiring ======
@@ -422,6 +571,8 @@
   // ====== Init ======
   (async function init() {
     try {
+      loadAppliedDiscount();
+
       const data = await fetchJSON('./products.json');
       const raw = Array.isArray(data) ? data : (data.products || []);
 
