@@ -48,8 +48,8 @@
   // ====== Config ======
   const CART_KEY     = 'minishop:cart';
   const DISCOUNT_KEY = 'minishop:discount';
-  const TAX_RATE     = 0.00; // set your tax rate here
-  const SHIP_LABEL   = 'Free';
+  const TAX_RATE     = 6.99; // set your tax rate here
+  const SHIP_LABEL   = '$0.00';
 
   // ====== Discount table (edit / extend as needed) ======
   // type: 'percent' or 'fixed' (fixed is same currency as your shop)
@@ -115,33 +115,26 @@
   }
 
   // ====== Totals (now includes discount calculation) ======
-  function totals(cart, applied) {
-    const subtotal = cart.reduce((s,i) => s + Number(i.price) * Number(i.qty), 0);
+function totals(cart, applied) {
+  const subtotal = cart.reduce((s,i) => s + Number(i.price) * Number(i.qty), 0);
 
-    // compute discount amount
-    let discount = 0;
-    if (applied && applied.meta) {
-      const meta = applied.meta;
-      // verify minSubtotal if present
-      if (!meta.minSubtotal || subtotal >= (meta.minSubtotal || 0)) {
-        if (meta.type === 'percent') {
-          discount = +(subtotal * (meta.value / 100)).toFixed(2);
-        } else if (meta.type === 'fixed') {
-          discount = +Number(meta.value).toFixed(2);
-        }
-        // make sure discount does not exceed subtotal
-        discount = Math.min(discount, subtotal);
-      } else {
-        // min not met -> discount is invalid for current subtotal
-        discount = 0;
-      }
-    }
-
-    const taxable = Math.max(0, subtotal - discount);
-    const tax = +(taxable * TAX_RATE).toFixed(2);
-    const grand = +(taxable + tax).toFixed(2);
-    return { subtotal, discount, tax, grand };
+  // compute discount amount
+  let discount = 0;
+  if (applied && applied.meta) {
+    const meta = applied.meta;
+    if (!meta.minSubtotal || subtotal >= (meta.minSubtotal || 0)) {
+      if (meta.type === 'percent') discount = +(subtotal * (meta.value / 100)).toFixed(2);
+      else if (meta.type === 'fixed') discount = +Number(meta.value).toFixed(2);
+      discount = Math.min(discount, subtotal);
+    } else discount = 0;
   }
+
+  const taxable = Math.max(0, subtotal - discount);
+  const tax = TAX_RATE; // **fixed tax**
+  const grand = +(taxable + tax).toFixed(2);
+
+  return { subtotal, discount, tax, grand };
+}
 
   function updateCartBadge() {
     const count = getCart().reduce((s,i)=>s+Number(i.qty),0);
