@@ -203,6 +203,12 @@
       .card--sm .media img{height:520px}
     }
     @media (max-width:520px){
+          .discount-banner {
+        margin-right: -90px;
+      }
+      .discount-banner p {
+        padding: 20px;
+      }
       .media img{height:420px}
       .card--sm .media img{height:420px}
     }
