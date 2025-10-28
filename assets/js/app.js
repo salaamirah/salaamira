@@ -19,8 +19,8 @@
   const elCartLines = $('#cartLines');
 
   const elSubTotal  = $('#subTotal');
-  const elTax       = $('#tax');
-  const elShip      = $('#ship');
+  const elTax       = $('#tax');   // note: HTML labels are swapped; we keep DOM ids as-is but write correct values
+  const elShip      = $('#ship');  // tax label uses id="ship" in HTML
   const elGrand     = $('#grand');
 
   const elDemoAdd   = $('#demoAdd');
@@ -41,14 +41,21 @@
   const ckApplyBtn = $('#ckApplyDiscount');
   const ckDiscountMsg = $('#ckDiscountMsg');
 
+  // Country input (checkout)
+  const ckCountry = $('#ckCountry');
+
   // New: containers for list vs. product page
   const elMain      = document.querySelector('main');
   const elProductPage = document.getElementById('productPage');
 
-  // ====== Config ======
+  // ====== Config (add shipping config here) ======
   const CART_KEY     = 'minishop:cart';
   const DISCOUNT_KEY = 'minishop:discount';
-  const TAX_RATE     = 6.99; // set your tax rate here
+  const TAX_RATE     = 0.00; // NOTE: this is a fixed tax amount in your app (keeps original behavior)
+
+  // Shipping (adjust amounts as you like)
+  const SHIPPING_DOMESTIC = 6.99;
+  const SHIPPING_INTERNATIONAL = 64.99;
   const SHIP_LABEL   = '$0.00';
 
   // ====== Discount table (edit / extend as needed) ======
@@ -114,27 +121,45 @@
     renderCartLines();
   }
 
-  // ====== Totals (now includes discount calculation) ======
-function totals(cart, applied) {
-  const subtotal = cart.reduce((s,i) => s + Number(i.price) * Number(i.qty), 0);
-
-  // compute discount amount
-  let discount = 0;
-  if (applied && applied.meta) {
-    const meta = applied.meta;
-    if (!meta.minSubtotal || subtotal >= (meta.minSubtotal || 0)) {
-      if (meta.type === 'percent') discount = +(subtotal * (meta.value / 100)).toFixed(2);
-      else if (meta.type === 'fixed') discount = +Number(meta.value).toFixed(2);
-      discount = Math.min(discount, subtotal);
-    } else discount = 0;
+  // ====== Shipping helpers ======
+  function normalizeCountry(c) {
+    return String(c || '').trim().toLowerCase();
+  }
+  function isDomesticCountry(country) {
+    if (!country) return true; // treat empty as domestic by default
+    const n = normalizeCountry(country);
+    return ['united states', 'usa', 'us'].includes(n);
+  }
+  function computeShippingForCountry(country) {
+    return isDomesticCountry(country) ? SHIPPING_DOMESTIC : SHIPPING_INTERNATIONAL;
   }
 
-  const taxable = Math.max(0, subtotal - discount);
-  const tax = TAX_RATE; // **fixed tax**
-  const grand = +(taxable + tax).toFixed(2);
+  function getCurrentShipping() {
+    const countryVal = ckCountry?.value || '';
+    return computeShippingForCountry(countryVal);
+  }
 
-  return { subtotal, discount, tax, grand };
-}
+  // ====== Totals (now accepts shipping param and returns shipping) ======
+  function totals(cart, applied, shipping = 0) {
+    const subtotal = cart.reduce((s,i) => s + Number(i.price) * Number(i.qty), 0);
+
+    // compute discount amount
+    let discount = 0;
+    if (applied && applied.meta) {
+      const meta = applied.meta;
+      if (!meta.minSubtotal || subtotal >= (meta.minSubtotal || 0)) {
+        if (meta.type === 'percent') discount = +(subtotal * (meta.value / 100)).toFixed(2);
+        else if (meta.type === 'fixed') discount = +Number(meta.value).toFixed(2);
+        discount = Math.min(discount, subtotal);
+      } else discount = 0;
+    }
+
+    const taxable = Math.max(0, subtotal - discount);
+    const tax = TAX_RATE; // retained fixed tax behavior
+    const grand = +(taxable + shipping + tax).toFixed(2);
+
+    return { subtotal, discount, tax, shipping, grand };
+  }
 
   function updateCartBadge() {
     const count = getCart().reduce((s,i)=>s+Number(i.qty),0);
@@ -259,7 +284,8 @@ function totals(cart, applied) {
   // ====== Drawer rendering (now shows discount row if applied) ======
   function renderCartLines() {
     const cart = getCart();
-    const { subtotal, discount, tax, grand } = totals(cart, APPLIED_DISCOUNT);
+    const currentShipping = getCurrentShipping();
+    const { subtotal, discount, tax, shipping, grand } = totals(cart, APPLIED_DISCOUNT, currentShipping);
 
     elCartLines.innerHTML = '';
 
@@ -316,22 +342,23 @@ function totals(cart, applied) {
     }
 
     elSubTotal.textContent = fmt(subtotal);
-    // show discount in tax slot? leave tax label as-is but reflect discount elsewhere; we will show discount in checkout dialog
-    elTax.textContent      = fmt(tax);
-    elShip.textContent     = SHIP_LABEL;
+    // NOTE: your HTML labels are arranged as: Shipping has id="tax", Tax has id="ship".
+    // We will write shipping into elTax (id="tax") and tax into elShip (id="ship") so labels are correct.
+    elTax.textContent      = fmt(shipping);  // shows shipping amount next to "Shipping" label
+    elShip.textContent     = fmt(tax);       // shows tax amount next to "Tax" label
     elGrand.textContent    = fmt(grand);
 
     // update checkout dialog totals if open
     if (ckDialog?.open) {
       ckItemsCount.textContent = String(cart.reduce((s,i)=>s+Number(i.qty),0));
       ckSub.textContent   = fmt(subtotal);
-      // show discount under ckTax slot by injecting hidden field? we'll show discount message separately
+      // keep ckTax as tax only (checkout UI has its own small fields)
       ckTax.textContent   = fmt(tax);
       ckTotal.textContent = fmt(grand);
 
       // reflect discount message in checkout UI
-      if (APPLIED_DISCOUNT && APPLIED_DISCOUNT.meta && totals(cart, APPLIED_DISCOUNT).discount > 0) {
-        ckDiscountMsg.textContent = `${APPLIED_DISCOUNT.code} applied — saved ${fmt(totals(cart, APPLIED_DISCOUNT).discount)}`;
+      if (APPLIED_DISCOUNT && APPLIED_DISCOUNT.meta && totals(cart, APPLIED_DISCOUNT, currentShipping).discount > 0) {
+        ckDiscountMsg.textContent = `${APPLIED_DISCOUNT.code} applied — saved ${fmt(totals(cart, APPLIED_DISCOUNT, currentShipping).discount)}`;
       } else {
         ckDiscountMsg.textContent = APPLIED_DISCOUNT ? 'Code not applicable to current subtotal' : '';
       }
@@ -374,6 +401,7 @@ function totals(cart, applied) {
         subtotal: +t.subtotal.toFixed(2),
         discount: +t.discount.toFixed(2),
         tax: +t.tax.toFixed(2),
+        shipping: +t.shipping.toFixed(2),
         total: +t.grand.toFixed(2),
         currency: 'USD'
       },
@@ -384,7 +412,8 @@ function totals(cart, applied) {
 
   function openCheckout() {
     const cart = getCart();
-    const t = totals(cart, APPLIED_DISCOUNT);
+    const currentShipping = getCurrentShipping();
+    const t = totals(cart, APPLIED_DISCOUNT, currentShipping);
     ckItemsCount.textContent = String(cart.reduce((s,i)=>s+Number(i.qty),0));
     ckSub.textContent   = fmt(t.subtotal);
     ckTax.textContent   = fmt(t.tax);
@@ -403,14 +432,17 @@ function totals(cart, applied) {
   }
   function closeCheckout() { try { ckDialog?.close(); } catch {} }
 
-  ckForm?.addEventListener('submit', () => {
+  // Single submit listener (includes shipping)
+  ckForm?.addEventListener('submit', (ev) => {
     const cart = getCart();
-    const t = totals(cart, APPLIED_DISCOUNT);
+    const currentShipping = getCurrentShipping();
+    const t = totals(cart, APPLIED_DISCOUNT, currentShipping);
     ensureHidden('order_items', cartToText(cart));
     ensureHidden('order_json',  cartToJSON(cart, t));
     ensureHidden('subtotal',    t.subtotal.toFixed(2));
     ensureHidden('discount',    t.discount.toFixed(2));
     ensureHidden('tax',         t.tax.toFixed(2));
+    ensureHidden('shipping',    t.shipping.toFixed(2));
     ensureHidden('total',       t.grand.toFixed(2));
     ensureHidden('discount_code', APPLIED_DISCOUNT ? APPLIED_DISCOUNT.code : '');
     if (COPY_ME) ensureHidden('_cc', COPY_ME);
@@ -454,6 +486,24 @@ function totals(cart, applied) {
       setAppliedDiscount(null);
       ckDiscountInput.value = '';
       ckDiscountMsg.textContent = '';
+    }
+  });
+
+  // Live update when user changes country on checkout
+  ckCountry?.addEventListener('input', () => {
+    // re-render drawer and checkout totals live
+    renderCartLines();
+    if (ckDialog?.open) {
+      // reflect shipping in checkout summary
+      const cart = getCart();
+      const currentShipping = getCurrentShipping();
+      const t = totals(cart, APPLIED_DISCOUNT, currentShipping);
+      ckSub.textContent = fmt(t.subtotal);
+      ckTax.textContent = fmt(t.tax);
+      ckTotal.textContent = fmt(t.grand);
+      if (APPLIED_DISCOUNT && t.discount > 0) ckDiscountMsg.textContent = `${APPLIED_DISCOUNT.code} applied — saved ${fmt(t.discount)}`;
+      else if (APPLIED_DISCOUNT) ckDiscountMsg.textContent = `Code ${APPLIED_DISCOUNT.code} not applicable`;
+      else ckDiscountMsg.textContent = '';
     }
   });
 
