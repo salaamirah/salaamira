@@ -195,6 +195,29 @@
     /* utilities */
     .visually-hidden{position:absolute!important; height:1px;width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap}
 
+/* Ensure the outer wrapper allows horizontal scrolling */
+.slider-wrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  padding-bottom: 1rem; /* Space for the scrollbar */
+}
+
+/* Align all cards in a single, non-wrapping horizontal row */
+.slider {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* Keeps all cards on 1 line */
+  gap: 1.5rem;       /* Space between cards */
+  width: max-content; /* Allows flex container to expand beyond screen width */
+}
+
+/* Give each card a fixed minimum width so they don't shrink */
+.slider .card {
+  flex: 0 0 260px; /* Fixed card width (adjust as needed) */
+  box-sizing: border-box;
+}
+
     /* responsive tweaks from original */
     @media (max-width:900px){
       .gallery{grid-template-columns:1fr}
