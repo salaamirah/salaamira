@@ -130,77 +130,169 @@
     </div>
   </section>
 
-  <!-- ===== COLLECTION SLIDER (static, scroll by touch/trackpad) ===== -->
-  <section class="collection" aria-label="Modal collection">
-    <div class="collection__inner">
-      <h2 class="collection__title">MODAL COLLECTION</h2>
-      <div class="slider">
-        <!-- Card 1 -->
+<!-- ===== FEATURED (static markup) ===== -->
+<section class="gallery" id="catalog" aria-label="Featured products">
+  <article class="card left">
+    <div class="media">
+      <img src="./assets/images/CHERRYRED1.webp" alt="Pearl Rose Modal Hijab">
+    </div>
+    <div class="meta">
+      <div class="title">CHERRY RED</div>
+      <div class="price"><span class="was">$21.00</span><span class="now">$19.99</span></div>
+      <a href="./collection.html#/p/cherry-red"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+    </div>
+  </article>
+
+  <div class="stack">
+    <article class="card card--sm">
+      <div class="media">
+        <img src="./assets/images/COLORPOP2.webp" alt="Peach Bloom Chiffon">
+      </div>
+      <div class="meta">
+        <div class="title">COLOR POP</div>
+        <div class="price"><span class="was">$25.00</span><span class="now">$19.99</span></div>
+        <a href="./collection.html#/p/color-pop"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+      </div>
+    </article>
+
+    <article class="card card--sm">
+      <div class="media">
+        <img src="./assets/images/demure.webp" alt="Soft Lilac Satin">
+      </div>
+      <div class="meta">
+        <div class="title">DEMURE</div>
+        <div class="price"><span class="was">$23.00</span><span class="now">$19.99</span></div>
+        <a href="./collection.html#/p/demure"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== COLLECTION SLIDER (Auto-scrolling continuous loop) ===== -->
+<section class="collection" aria-label="Modal collection">
+  <div class="collection__inner">
+    <h2 class="collection__title">MODAL COLLECTION</h2>
+    <div class="slider-wrapper">
+      <div class="slider auto-scroll">
+        <!-- Original Cards Set -->
         <div class="card">
           <div class="arch"><img src="./assets/images/MIDNIGHTDREAM2.webp" alt="Modal Sand"></div>
           <div class="card__content">
             <div class="title">MIDNIGHT DREAM</div>
             <div class="price"><span class="was">$25.00</span><span class="now">$19.99</span></div>
-            <a href="./collection.html#/p/midnight-dream"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+            <a href="./collection.html#/p/midnight-dream"><button class="btn" type="button">View Product</button></a>
           </div>
         </div>
-        <!-- Card 2 -->
         <div class="card">
           <div class="arch"><img src="./assets/images/VINTAGEFLORA.webp" alt="Modal Rose"></div>
           <div class="card__content">
             <div class="title">VINTAGE FLORA</div>
             <div class="price-row"><span class="compare">$23.00</span><span class="price">$19.99</span></div>
-             <a href="./collection.html#/p/vintage-flora"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+            <a href="./collection.html#/p/vintage-flora"><button class="btn" type="button">View Product</button></a>
           </div>
         </div>
-        <!-- Card 3 -->
         <div class="card">
           <div class="arch"><img src="./assets/images/POOKIE_e668edcd-c51d-4b81-8719-9973d66796ee.webp" alt="Modal Olive"></div>
           <div class="card__content">
             <div class="title">POOKIE</div>
             <div class="price-row"><span class="compare">$25.00</span><span class="price">$19.99</span></div>
-            <a href="./collection.html#/p/pookie"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+            <a href="./collection.html#/p/pookie"><button class="btn" type="button">View Product</button></a>
           </div>
         </div>
-        <!-- Card 4 -->
         <div class="card">
           <div class="arch"><img src="./assets/images/COLORPOP2.webp" alt="Modal Cloud"></div>
           <div class="card__content">
             <div class="title">COLOR POP</div>
             <div class="price-row"><span class="compare">$25.00</span><span class="price">$19.99</span></div>
-            <a href="./collection.html#/p/color-pop"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+            <a href="./collection.html#/p/color-pop"><button class="btn" type="button">View Product</button></a>
           </div>
         </div>
-        <!-- Card 5 -->
         <div class="card">
           <div class="arch"><img src="./assets/images/OBRELICIOUS-1_7748dddf-3fff-4ce7-a8d2-f1f22301ddb3.webp" alt="Modal Cloud"></div>
           <div class="card__content">
             <div class="title">OMBRELICIOUS</div>
             <div class="price-row"><span class="compare">$21.00</span><span class="price">$19.99</span></div>
-            <a href="./collection.html#/p/ombrelicious"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+            <a href="./collection.html#/p/ombrelicious"><button class="btn" type="button">View Product</button></a>
           </div>
         </div>
-        <!-- Card 6 -->
         <div class="card">
           <div class="arch"><img src="./assets/images/CHERRYRED1.webp" alt="Modal Cloud"></div>
           <div class="card__content">
             <div class="title">CHERRY RED</div>
             <div class="price-row"><span class="compare">$21.00</span><span class="price">$19.99</span></div>
-            <a href="./collection.html#/p/cherry-red"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+            <a href="./collection.html#/p/cherry-red"><button class="btn" type="button">View Product</button></a>
           </div>
         </div>
-        <!-- Card 7 -->
         <div class="card">
           <div class="arch"><img src="./assets/images/demure.webp" alt="Modal Cloud"></div>
           <div class="card__content">
             <div class="title">DEMURE</div>
             <div class="price-row"><span class="compare">$23.00</span><span class="price">$19.99</span></div>
-            <a href="./collection.html#/p/demure"><button class="btn" type="button" aria-disabled="true">View Product</button></a>
+            <a href="./collection.html#/p/demure"><button class="btn" type="button">View Product</button></a>
+          </div>
+        </div>
+
+        <!-- Duplicated Set for Seamless Infinite Loop -->
+        <div class="card" aria-hidden="true">
+          <div class="arch"><img src="./assets/images/MIDNIGHTDREAM2.webp" alt="Modal Sand"></div>
+          <div class="card__content">
+            <div class="title">MIDNIGHT DREAM</div>
+            <div class="price"><span class="was">$25.00</span><span class="now">$19.99</span></div>
+            <a href="./collection.html#/p/midnight-dream"><button class="btn" type="button" tabindex="-1">View Product</button></a>
+          </div>
+        </div>
+        <div class="card" aria-hidden="true">
+          <div class="arch"><img src="./assets/images/VINTAGEFLORA.webp" alt="Modal Rose"></div>
+          <div class="card__content">
+            <div class="title">VINTAGE FLORA</div>
+            <div class="price-row"><span class="compare">$23.00</span><span class="price">$19.99</span></div>
+            <a href="./collection.html#/p/vintage-flora"><button class="btn" type="button" tabindex="-1">View Product</button></a>
+          </div>
+        </div>
+        <div class="card" aria-hidden="true">
+          <div class="arch"><img src="./assets/images/POOKIE_e668edcd-c51d-4b81-8719-9973d66796ee.webp" alt="Modal Olive"></div>
+          <div class="card__content">
+            <div class="title">POOKIE</div>
+            <div class="price-row"><span class="compare">$25.00</span><span class="price">$19.99</span></div>
+            <a href="./collection.html#/p/pookie"><button class="btn" type="button" tabindex="-1">View Product</button></a>
+          </div>
+        </div>
+        <div class="card" aria-hidden="true">
+          <div class="arch"><img src="./assets/images/COLORPOP2.webp" alt="Modal Cloud"></div>
+          <div class="card__content">
+            <div class="title">COLOR POP</div>
+            <div class="price-row"><span class="compare">$25.00</span><span class="price">$19.99</span></div>
+            <a href="./collection.html#/p/color-pop"><button class="btn" type="button" tabindex="-1">View Product</button></a>
+          </div>
+        </div>
+        <div class="card" aria-hidden="true">
+          <div class="arch"><img src="./assets/images/OBRELICIOUS-1_7748dddf-3fff-4ce7-a8d2-f1f22301ddb3.webp" alt="Modal Cloud"></div>
+          <div class="card__content">
+            <div class="title">OMBRELICIOUS</div>
+            <div class="price-row"><span class="compare">$21.00</span><span class="price">$19.99</span></div>
+            <a href="./collection.html#/p/ombrelicious"><button class="btn" type="button" tabindex="-1">View Product</button></a>
+          </div>
+        </div>
+        <div class="card" aria-hidden="true">
+          <div class="arch"><img src="./assets/images/CHERRYRED1.webp" alt="Modal Cloud"></div>
+          <div class="card__content">
+            <div class="title">CHERRY RED</div>
+            <div class="price-row"><span class="compare">$21.00</span><span class="price">$19.99</span></div>
+            <a href="./collection.html#/p/cherry-red"><button class="btn" type="button" tabindex="-1">View Product</button></a>
+          </div>
+        </div>
+        <div class="card" aria-hidden="true">
+          <div class="arch"><img src="./assets/images/demure.webp" alt="Modal Cloud"></div>
+          <div class="card__content">
+            <div class="title">DEMURE</div>
+            <div class="price-row"><span class="compare">$23.00</span><span class="price">$19.99</span></div>
+            <a href="./collection.html#/p/demure"><button class="btn" type="button" tabindex="-1">View Product</button></a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ===== SALAAM EXCLUSIVE SECTION ===== -->
   <section class="salaam" id="salaam">
